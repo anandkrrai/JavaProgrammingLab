@@ -1,12 +1,22 @@
 import Lab01.Queue;
 import Lab01.Stack;
-
-import java.awt.*;
+import Lab03.Consumer;
+import Lab03.Item;
+import Lab03.Producer;
 
 public class Main {
     public static void main(String[] args) {
         // executeLab01();
 
+        Item item = new Item();
+        Producer producer = new Producer(item);
+        Consumer consumer = new Consumer(item);
+
+        Thread pThread = new Thread(producer);
+        Thread cThread = new Thread(consumer);
+
+        pThread.start();
+        cThread.start();
     }
 
     private static void executeLab01() {
